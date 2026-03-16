@@ -136,24 +136,22 @@ const HeroSection = () => {
             <TypewriterText
               text="[SYSTEM] :: VIBE CODING PROTOCOL INITIALIZED..."
               speed={30}
-              onComplete={() => setTimeout(() => setPhase(1), 400)}
+              onComplete={() => {
+                setTimeout(() => setPhase((prev) => (prev === 0 ? 1 : prev)), 400);
+              }}
             />
           </p>
         </motion.div>
 
         {phase >= 1 && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
+          <div>
             <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Mainak Dasgupta
             </h1>
             <p className="font-mono text-lg md:text-xl text-signal mt-2">
               Software Engineer
             </p>
-          </motion.div>
+          </div>
         )}
 
         {phase >= 2 && (
